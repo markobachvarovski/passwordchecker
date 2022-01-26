@@ -2,6 +2,7 @@ import requests
 import hashlib
 import sys
 
+
 def requestData(hashedPass):
     url = 'https://api.pwnedpasswords.com/range/' + hashedPass
     response = requests.get(url)
@@ -39,6 +40,16 @@ def main(args):
       print(f'{args} was NOT found. Carry on!')
     return None
 
+
 if __name__ == '__main__':
-    input = input('What is your password?\n')
-    sys.exit(main(input))
+    print("Please enter a password or enter \"\q\" to exit")
+
+    while True:
+        password = input('What is your password?\n')
+
+        if password == "\q":
+            break
+
+        main(password)
+
+    sys.exit()
